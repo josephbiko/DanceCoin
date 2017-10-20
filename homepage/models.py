@@ -6,9 +6,7 @@ from django.contrib.auth.models import User
 
 class account(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
-    currency = models.FloatField(default=0)
-
-
+    tokens = models.FloatField(default=0)
 
 
 
