@@ -10,12 +10,22 @@
 <form method="POST" id="post-form">
     {% csrf_token %}
     <input id="qrcode" name="qr" type="hidden">
+    <select name="drink">
+        <option value="Beer" selected>beer</option>
+        <option value="Wine">Wine</option>
+        <option value="Cola">Cola</option>
+        <option value="Liquor">Liquor</option>
+    </select>
+    <input div="#number" type="number" name="amount" value="1">
+
 </form>
 
 <script>
 
 $('#post-form').on('submit', function(event){
     console.log("form submitted!")  // sanity check
+    $("#number").val(0)
+
 });
 
 $('#reader').html5_qrcode(function(data){

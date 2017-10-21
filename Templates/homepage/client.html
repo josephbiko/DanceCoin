@@ -9,9 +9,6 @@
 
 <div id="qrcode"></div>
 
-
-
-
 <form method="POST" id="post-form">
     {% csrf_token %}
     <input id="qrcode" name="qr" type="hidden">
@@ -19,7 +16,7 @@
 
 <script>
 
-        if (window.DeviceMotionEvent == undefined) {
+    if (window.DeviceMotionEvent == undefined) {
         //No accelerometer is present. Use buttons.
         alert("no accelerometer");
     }

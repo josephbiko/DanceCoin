@@ -34,5 +34,9 @@ class home(TemplateView):
 
 
 def shopPost(self,request):
-    print(request.POST)
+    post = {}
+    for p in request.POST:
+        post[p] = request.POST[p].encode("ascii")
+    print(post)
+
 
