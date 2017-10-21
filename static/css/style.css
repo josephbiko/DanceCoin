@@ -1,0 +1,231 @@
+body {
+    margin: 0px;
+    color: black;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+    overflow: hidden;
+    max-width: 980px;
+    max-height: 1742;
+}
+
+img {
+    display: block;
+    margin: auto;
+    max-width: 100%;
+}
+
+.gamecoins {
+    background-color: #F24236;
+    color: white;
+    padding: 50px 50px;
+    margin: 8px 0;
+    border-bottom: none;
+    border-radius: 200px;
+    border-bottom: 1px;  
+    color: white;
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: 15px;
+}
+
+.screenm {
+    background-color: #F24236;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.screenb {
+    background-color: #2E86AB;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.screenl {
+    background-color: #78c47a;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.screenr {
+    background-color: #F5F749;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.login {
+    background-color: white;
+    height: 82.5%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    display: block;
+    border-radius: 100px;
+    padding-top: 7.5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.block {
+    background-color: white;
+    height: 75%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    display: block;
+    border-radius: 100px;
+    padding-top: 7.5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.blockl {
+    background-color: #78c47a;
+    height: 75%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    display: block;
+    border-radius: 100px;
+    padding-top: 7.5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.blockr {
+    background-color: #F5F749;
+    height: 75%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    display: block;
+    border-radius: 100px;
+    padding-top: 7.5%;
+    padding-left: 7.5%;
+    padding-right: 7.5%;
+}
+
+.navigation {
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    background-color: cyan;
+}
+
+.navigationitem {
+    width: calc(100%  /3);
+    color: cyan;
+    display: block;
+    float:left;
+    text-align: center;
+    margin-top: 7.5%
+}
+
+.screentop {
+    height: 7%;
+    display: block;
+}
+
+#opacity {
+    opacity: 0.2;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+    padding-left: 24px;
+}
+
+tr:nth-child(even){background-color: #565554}
+
+h1 {
+    font-size: 80px;
+    text-align: center;
+    font-weight: 500;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+h2 {
+    font-size: 50px;
+    color: black;
+    font-weight: 500;
+    margin-top: 50px;
+    text-align: left;
+}
+
+h3 {
+    font-size: 30px;
+    text-transform: uppercase;
+    color: #9A9FA7;
+    font-weight: 500;
+    margin-top: 50px;
+    text-align: center;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 50px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #9A9FA7;
+    font-weight: 500;
+    margin-bottom: 100px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+}
+
+input[type=password], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-size: 50px;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #9A9FA7;
+    font-weight: 500;
+    margin-bottom: 100px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+    -webkit-text-security: disc;
+}
+
+input[type=submit] {
+    width: 80%;
+    background-color: #2E86AB;
+    color: white;
+    padding: 50px 50px;
+    margin: 8px 0;
+    border-bottom: none;
+    border-radius: 200px;
+    border-bottom: 1px;  
+    color: white;
+    margin-left: 10%;
+    font-size: 50px;
+    font-weight: 500;
+    margin-top: 50px;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 5px;
+}
+
+input[type=submit]:hover {
+    background-color: #2E86AB;
+    
+}
+
+.form {
+    padding: 20px;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    #9A9FA7;
+}

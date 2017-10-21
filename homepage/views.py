@@ -16,5 +16,22 @@ class home(TemplateView):
             user = account.objects.get(user=request.user)
 
         context = {"login": request.user.is_authenticated(), "user":user}
+        return render(request,"homepage/home.html",context=context)
+
+    def post(self,request,*args,**kwargs):
+        print(request.POST)
+
+        user = None
+        if request.user.is_authenticated():
+            user = account.objects.get(user=request.user)
+            if user.type == "shop":
+                shopPost(self,request)
+
+        context = {"login": request.user.is_authenticated(), "user":user}
 
         return render(request,"homepage/home.html",context=context)
+
+
+def shopPost(self,request):
+    print(request.POST)
+

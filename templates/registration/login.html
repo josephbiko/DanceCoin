@@ -1,12 +1,28 @@
-{% extends 'base.html' %}
+<html>
+<head>
+<title>Login | DanceCoin</title>
+<link rel="stylesheet" type="text/css" href="style.css">
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+</head>
+    
+<body id="touchsurface">
+<div class="screenb">
+    <div class="screentop"></div>
+    <div class="login">
+        <br><br><br><div id="imgcenter"><img src="https://static1.squarespace.com/static/57a87472725e25e92a3605fd/t/57c6daacf5e23129c0e61609/1472649912973/"></div>
+        <h1>Log into DanceCoin</h1>
+        <div id="form">
+          <form action="/QR.html">
+              {% csrf_token %}
+            <input type="text" id="uname" name="username" placeholder="Username">
 
-{% block title %}Login{% endblock %}
-
-{% block content %}
-  <h2>Login</h2>
-  <form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Login</button>
-  </form>
-{% endblock %}
+            <input type="password" id="pword" name="password" placeholder="Password">
+              
+            <input type="submit" value="Login">
+          </form>
+            <h3><br>Not registered? <font color="#2E86AB">Create an account</font><br>
+        </div>
+    </div>
+</div>
+</body>
+</html>
