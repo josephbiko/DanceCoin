@@ -5,7 +5,7 @@
 {% csrf_token %}
 <p>Hallo</p>
 <div id="reader" style="width:300px;height:300px">
- </div>
+</div>
 
 <form method="POST" id="post-form">
     {% csrf_token %}
@@ -19,26 +19,61 @@
     <input div="#number" type="number" name="amount" value="1">
 
 </form>
+<button id="test">TEST</button>
 
 <script>
+    mdnAPI = "http://172.16.23.140:7999";
 
-$('#post-form').on('submit', function(event){
-    console.log("form submitted!")  // sanity check
-    $("#number").val(0)
+    $("#test").click(function () {
+        form_post("AB");
 
-});
+    });
 
-$('#reader').html5_qrcode(function(data){
-    console.log("read");
-    $("#qrcode").val(data);
-    console.log("read:"+data)
-    $('#post-form').submit();
+    function objectifyForm(formArray) {//serialize data function
 
- 	},
- 	function(error){
-		//show read errors
-	}, function(videoError){
-		//the video stream could be opened
-	}
-);
+        var returnArray = {};
+        for (var i = 0; i < formArray.length; i++) {
+            returnArray[formArray[i]['name']] = formArray[i]['value'];
+        }
+        return returnArray;
+    }
+
+    function succes() {
+        alert("post succesful")
+    }
+
+
+    function form_post(data) {
+        //You have to get in this code the values you need to work with, for example:
+        $("#qrcode").val(data);
+        var datastring = $("#post-form").serialize();
+
+        $.ajax({  //Call ajax function sending the option loaded
+            url: mdnAPI,  //This is the url of the ajax view where you make the search
+            type: 'post',
+            data: datastring,
+            success: function (response) {
+                result = JSON.parse(response);  // Get the results sended from ajax to here
+                if (result.error) { // If the function fails
+                    // Error
+                    alert(result.error_text);
+                } else {  // Success
+                    alert("succes")
+                    //Here do whatever you need with the result;
+                }
+            }
+        });
+        alert("succes");
+
+    }
+
+    $('#reader').html5_qrcode(function(data){
+        form_post(data)},
+                function (error) {
+                    //show read errors
+                }, function (videoError) {
+                //the video stream could be opened
+            }
+
+    );
 </script>

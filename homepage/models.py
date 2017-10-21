@@ -33,6 +33,16 @@ class Tickets(models.Model):
 class Purchase(models.Model):
     account = models.ForeignKey(Account,null=False)
     amount = models.FloatField(Account,null=False)
+    drink = models.ForeignKey("Drinks")
+
+class Drinks(models.Model):
+    type = models.CharField(max_length=64)
+    price = models.FloatField(default=1)
+
+    def __unicode__(self):
+        return self.type
+
+
 
 
 

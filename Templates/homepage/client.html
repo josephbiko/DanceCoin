@@ -5,6 +5,9 @@
 <p>user authenticated={{ login }}</p>
 <p> tokens:{{ user.tokens }}
 <p> hash: {{ user.hash }}</p>
+{% for ticket in tickets %}
+<p> ticket:{{ ticket }} </p>
+{% endfor %}
 
 
 <div id="qrcode"></div>
