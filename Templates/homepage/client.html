@@ -1,42 +1,87 @@
 {% load staticfiles %}
 
 
-<p>HOME</p>
-<p>user authenticated={{ login }}</p>
-<p> tokens:{{ user.tokens }}
-<p> hash: {{ user.hash }}</p>
-{% for ticket in tickets %}
-<p> ticket:{{ ticket }} </p>
-{% endfor %}
+<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href='{% static "css/style.css" %}'>
+
+<div class="screenm">
+    <div class="screentop"></div>
+    <div class="block">
+        <div><img
+                src="https://static1.squarespace.com/static/57a87472725e25e92a3605fd/t/57c6daacf5e23129c0e61609/1472649912973/">
+        </div>
 
 
-<div id="qrcode"></div>
+        <div id="qrcode"></div>
+        <div class="gamecoins">{{ user.tokens }} DanceCoins</div>
+                    {% for ticket in tickets %}
+                        <p>{{ ticket.festival }} at {{ ticket.festival.date }}</p>
+                    {% endfor %}
+    </div>
 
-<form method="POST" id="post-form">
-    {% csrf_token %}
-    <input id="qrcode" name="qr" type="hidden">
-</form>
+    <div class="navigation">
+        <a href="map.html">
+            <div class="navigationitem"><img src="http://simpleicon.com/wp-content/uploads/map-marker-13.svg"
+                                             height="100px" id="opacity"></div>
+        </a>
+        <div class="navigationitem"><img src="https://d30y9cdsu7xlg0.cloudfront.net/png/29897-200.png" height="100px"
+                                         id="opacity"></div>
+        <a href="bar.html">
+            <div class="navigationitem"><img src="https://maxcdn.icons8.com/Share/icon/Food//bar_filled1600.png"
+                                             height="100px" id="opacity"></div>
+        </a>
+
+    </div>
+
+
+</div>
+
 
 <script>
+    var generatedCoins=0;
 
-    if (window.DeviceMotionEvent == undefined) {
-        //No accelerometer is present. Use buttons.
-        alert("no accelerometer");
-    }
-    else {
-        alert("accelerometer found");
-        window.addEventListener("devicemotion", accelerometerUpdate, true);
-    }
-    function accelerometerUpdate(event){
-  alert("Accelerometer: "
-    + event.accelerationIncludingGravity.x + ", "
-    + event.accelerationIncludingGravity.y + ", "
-    + event.accelerationIncludingGravity.z
-  );
-}
-
-</script>
-
-<script>
     $('#qrcode').qrcode("{{ user.hash }}")
+
+    function findAccelerometer() {
+        if (window.DeviceMotionEvent == undefined) {
+            //No accelerometer is present. Use buttons.
+            alert("no accelerometer");
+        }
+        else {
+            alert("accelerometer found");
+            window.addEventListener("devicemotion", accelerometerUpdate, true);
+        }
+    }
+
+    var oldX=0;
+    var oldY=0;
+    var oldZ=0;
+    val=0;
+
+    function accelerometerUpdate(event) {
+
+
+         val+= Math.sqrt(Math.pow(event.accelerationIncludingGravity.x -oldX ,2)+
+                    Math.pow(event.accelerationIncludingGravity.y - oldY,2)+
+                    Math.pow(event.accelerationIncludingGravity.z - oldZ,2));
+            oldX = event.accelerationIncludingGravity.x;
+            oldY = event.accelerationIncludingGravity.y;
+            oldZ = event.accelerationIncludingGravity.z;
+            if(val>500){
+                generatedCoins+=1;
+                val=0;
+            }
+
+            }
+
+
+        setInterval ( alertCoins, 6000 );
+        function alertCoins(){
+
+            val=0;
+        }
+
+        findAccelerometer();
 </script>
+
