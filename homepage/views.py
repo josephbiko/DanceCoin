@@ -3,19 +3,20 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 from django.views.generic import View,TemplateView
-from models import account
+from models import Account,Tickets,Festival
 # Create your views here.
 
 
 class home(TemplateView):
-    template_name = "homepage/login.html"
+    template_name = "homepage/../templates/registration/login.html"
 
     def get(self, request, *args, **kwargs):
         user = None
         if request.user.is_authenticated():
-            user = account.objects.get(user=request.user)
+            account = Account.objects.get(user=request.user)
+            tickets = Tickets.objects.filter(account=account)
+        context = {"login": request.user.is_authenticated(), "user":account}
 
-        context = {"login": request.user.is_authenticated(), "user":user}
         return render(request,"homepage/home.html",context=context)
 
     def post(self,request,*args,**kwargs):
@@ -23,7 +24,7 @@ class home(TemplateView):
 
         user = None
         if request.user.is_authenticated():
-            user = account.objects.get(user=request.user)
+            user = Account.objects.get(user=request.user)
             if user.type == "shop":
                 shopPost(self,request)
 

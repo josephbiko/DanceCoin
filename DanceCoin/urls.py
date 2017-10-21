@@ -21,6 +21,8 @@ from homepage.views import home
 urlpatterns = [
     url(r'^login/$', auth_views.login, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^dancecoin/$', home.as_view(), name="home"),
     url(r'^$', home.as_view(), name="home"),
+
     url(r'^admin/', admin.site.urls),
 ]

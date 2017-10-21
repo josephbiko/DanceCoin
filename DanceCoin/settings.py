@@ -25,7 +25,7 @@ SECRET_KEY = 'yw2*(g$p&mwni5kfjqx7pf4p0hk%5_k-ofu4h$wr0hf3jq-bc('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['198.211.99.20', 'localhost', '127.0.0.1','172.16.23.140']
 
 
 # Application definition
@@ -55,7 +55,7 @@ ROOT_URLCONF = 'DanceCoin.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'Templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

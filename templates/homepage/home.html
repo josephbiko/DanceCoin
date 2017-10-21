@@ -3,18 +3,18 @@
 
 {% block scripts_css %}
     <script type="text/javascript" src="{% static "library/jquery-qrcode/jquery.qrcode.min.js" %}"></script>
+
 {% endblock %}
 
 {% block content %}
-<p>HOME</p>
-<p>user authenticated={{ login }}</p>
-<p> tokens:{{ user.tokens }}
-<p> hash: {{ user.hash }}</p>
-<div id="qrcode"></div>
+    {% if user.type == "client" %}
+    {% include "homepage/client.html" %}
+    {% endif %}
 
-<script>
-    $('#qrcode').qrcode("{{ user.hash }}")
-</script>
+    {% if user.type == "shop" %}
+        {% include "homepage/shop.html" %}
+    {% endif %}
+
 
 
 {% endblock %}

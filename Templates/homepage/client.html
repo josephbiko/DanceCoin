@@ -1,0 +1,42 @@
+{% load staticfiles %}
+
+
+<p>HOME</p>
+<p>user authenticated={{ login }}</p>
+<p> tokens:{{ user.tokens }}
+<p> hash: {{ user.hash }}</p>
+
+
+<div id="qrcode"></div>
+
+
+
+
+<form method="POST" id="post-form">
+    {% csrf_token %}
+    <input id="qrcode" name="qr" type="hidden">
+</form>
+
+<script>
+
+        if (window.DeviceMotionEvent == undefined) {
+        //No accelerometer is present. Use buttons.
+        alert("no accelerometer");
+    }
+    else {
+        alert("accelerometer found");
+        window.addEventListener("devicemotion", accelerometerUpdate, true);
+    }
+    function accelerometerUpdate(event){
+  alert("Accelerometer: "
+    + event.accelerationIncludingGravity.x + ", "
+    + event.accelerationIncludingGravity.y + ", "
+    + event.accelerationIncludingGravity.z
+  );
+}
+
+</script>
+
+<script>
+    $('#qrcode').qrcode("{{ user.hash }}")
+</script>
